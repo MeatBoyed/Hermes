@@ -1,0 +1,99 @@
+﻿<Window x:Class="Hermes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hermes"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="Transparent"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="Hermes OBD" Height="750" Width="1350"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
+
+    <Border Background="#272537"
+            CornerRadius="15">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="45" />
+            </Grid.RowDefinitions>
+
+            <Frame Grid.Row="0" 
+                   x:Name="MainFrame" 
+                   NavigationUIVisibility="Hidden"
+                   Margin="10,0,0,0"/>
+
+            <!--#region Navigation Bar -->
+            <Menu Grid.Row="1"
+                  HorizontalAlignment="Center">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="64" />
+                        <ColumnDefinition Width="64" />
+                        <ColumnDefinition Width="64" />
+                        <ColumnDefinition Width="64" />
+                        <ColumnDefinition Width="64" />
+                    </Grid.ColumnDefinitions>
+
+                    <MenuItem Header=""
+                              Foreground="White"
+                              x:Name="HomeBtn"
+                              Click="HomeBtn_Click"
+                              Grid.Column="0">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="Home" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header=""
+                              Foreground="White"
+                              x:Name="ArtemisBtn"
+                              Click="ArtemisBtn_Click"
+                              Grid.Column="1">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="CarSports" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header=""
+                              Foreground="White"
+                              x:Name="ErrorScanBtn"
+                              Click="ErrorScanBtn_Click"
+                              Grid.Column="2">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="CarBrakeWarning" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header=""
+                              Foreground="White"
+                              x:Name="CANScannerBtn"
+                              Click="CANScannerBtn_Click"
+                              Grid.Column="3">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="BarcodeScanner" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header=""
+                              Foreground="White"
+                              Grid.Column="4"
+                              x:Name="ExitBtn"
+                              Click="ExitBtn_Click">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ExitToApp" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </Grid>
+            </Menu>
+            <!--#endregion-->
+        </Grid>
+    </Border>
+</Window>
