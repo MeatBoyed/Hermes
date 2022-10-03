@@ -4,8 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hermes.Views"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:models="clr-namespace:Hermes.Models" d:DataContext="{d:DesignInstance Type=models:HomeViewModel}"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
     TextElement.FontSize="13"
     TextOptions.TextFormattingMode="Ideal" 
@@ -16,6 +16,7 @@
       Title="Home"
       >
 
+    
     <Grid Margin="9,20,11,0">
 
         <!-- Main Views Layout Definitions -->
@@ -73,30 +74,62 @@
                        FontWeight="Medium"
                        Grid.Column="1"
                        Grid.Row="1"/>
-
+                
                 <StackPanel Orientation="Horizontal"
                         Grid.Column="1"
                         Grid.ColumnSpan="10"
                         Grid.Row="0"
                         HorizontalAlignment="Right">
 
-                    <MenuItem Header=""
-                                  Foreground="White"
-                                  Grid.Column="0"
-                                  Width="65">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="Bluetooth" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header=""
-                                  Foreground="White"
-                                  Grid.Column="1"
-                                  Width="65">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon Kind="Location" />
-                        </MenuItem.Icon>
-                    </MenuItem>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions> 
+                        
+                        <MenuItem Header=""
+                                      Foreground="White"
+                                      Grid.Column="0"
+                                      Width="65">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="Bluetooth" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header=""
+                                      Foreground="White"
+                                      Grid.Column="1"
+                                      Width="65">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="Location" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+
+                        <ComboBox x:Name="portsSelectionBox"
+                                  Grid.Column="2"
+                                  Grid.Row="0"
+                                  ItemsSource="{Binding OBDReader.PortSettings.AvailblePorts, Mode=OneTime}"
+                                  SelectedItem="{Binding OBDReader.PortSettings.SelectedPort, UpdateSourceTrigger=PropertyChanged}"
+                                  Width="100"
+                                  FontSize="15"
+                                  Padding="5,5,5,0"
+                                  Background="White" Margin="0,0,15,0" />
+
+                        <Button x:Name="ConnectOBD"
+                                Command="{Binding OBDReader.ConnectCommand, Mode=OneTime}"
+                                Content="Connect"
+                                FontSize="15"
+                                FontWeight="SemiBold"
+                                Foreground="White"
+                                Width="100"
+                                Grid.Column="3"
+                                Grid.Row="0"/>
+                    </Grid>
+
+
                 </StackPanel>
+                
             </Grid>
         </StackPanel>
         <!--#endregion-->
@@ -153,7 +186,7 @@
                                                  Grid.Column="0"
                                                  VerticalAlignment="Center"
                                                  Margin="0,0.5,5,0"/>
-                        <Label Content="204 km"
+                        <Label Content="{Binding FuelLevel}"
                                FontSize="15"
                                FontWeight="SemiBold"
                                Foreground="White"
@@ -169,7 +202,7 @@
                                Margin="0,-15,0,0"/>
                         
                         <!-- Fuel Capacity -->
-                        <Label Content="35 litres"
+                        <Label Content="{Binding PeddleValue}"
                                FontSize="15"
                                FontWeight="SemiBold"
                                Foreground="White"
@@ -185,7 +218,7 @@
                                Margin="0,-15,0,0"/>
 
                         <!-- Fuel Consumption -->
-                        <Label Content="13 km/l"
+                        <Label Content="{Binding FuelStatus}"
                                FontSize="15"
                                FontWeight="SemiBold"
                                Foreground="White"
@@ -196,6 +229,14 @@
                                Foreground="White"
                                Opacity="0.8"
                                Grid.Row="1"
+                               Grid.Column="3" 
+                               Height="25"
+                               Margin="0,-15,0,0"/>
+                        <Label Content="{Binding EngineStartTime}"
+                               FontSize="10"
+                               Foreground="White"
+                               Opacity="0.8"
+                               Grid.Row="0"
                                Grid.Column="3" 
                                Height="25"
                                Margin="0,-15,0,0"/>
@@ -464,10 +505,17 @@
                    Foreground="White"/>
         </Border>
 
-        <materialDesign:Card Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" materialDesign:ShadowAssist.ShadowDepth="Depth5" >
+        <Label Content="{Binding OBDReader.PortSettings.SelectedPort, UpdateSourceTrigger=PropertyChanged}"
+               Foreground="White"
+               Grid.Column="0"
+               FontSize="20"
+               Grid.Row="3"/>
+
+
+        <!--<materialDesign:Card Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" materialDesign:ShadowAssist.ShadowDepth="Depth5" >
 
             <materialDesign:PackIcon Kind="Clock" Width="69" Foreground="Blue"/>
 
-        </materialDesign:Card>
+        </materialDesign:Card>-->
     </Grid>
 </Page>

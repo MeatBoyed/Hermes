@@ -24,7 +24,8 @@ namespace Hermes
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Artemis());
+            //MainFrame.Navigate(new Artemis());
+            MainFrame.Navigate(new Home());
         }
 
         private void HomeBtn_Click(object sender, RoutedEventArgs e)

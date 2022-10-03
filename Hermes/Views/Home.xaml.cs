@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hermes.API;
+using Hermes.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,12 +23,13 @@ namespace Hermes.Views
     /// </summary>
     public partial class Home : Page
     {
-        DispatcherTimer timer = new DispatcherTimer();
+        readonly DispatcherTimer timer = new DispatcherTimer();
 
         public Home()
         {
             InitializeComponent();
             StartTimer();
+            DataContext = new HomeViewModel();
         }
 
         private void StartTimer()
