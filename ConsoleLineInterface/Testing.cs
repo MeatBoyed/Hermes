@@ -1,4 +1,5 @@
 ﻿using Elyon;
+using Elyon.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace ConsoleLineInterface
     {
         public static void Main(string[] args)
         {
-            IOCommand RPMCommand = new IOCommand("01 0C");
+            OBDCommand RPMCommand = new OBDCommand("01 0C");
             IOQuery query = new IOQuery(RPMCommand);
             IODevice device = new IODevice("COM11");
             device.QueryCompleted += OnQueryCompleted;

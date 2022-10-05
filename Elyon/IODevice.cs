@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Elyon
 {
+    /// <summary>
+    /// EXTRACT: Section 3
+    /// </summary>
     public class IODevice
     {
         public IOQuery Query;

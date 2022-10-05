@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IOCommand.cs" />
+    <Compile Include="Commands\ELM327Commands.cs" />
+    <Compile Include="Commands\OBDCommand.cs" />
+    <Compile Include="Commands\IOCommand.cs" />
     <Compile Include="IODevice.cs" />
     <Compile Include="IOQuery.cs" />
     <Compile Include="IOResponse.cs" />
