@@ -10,55 +10,60 @@ using System.Threading;
 
 // 1 - Formatting is out ">LM327 v1.5" should be, ">ELM327 v1.5"
 // 2 - Request Engine RPM and display both Rest and new command
-//public class ConsoleLineInterface
-//{
-//    private static SerialPort serialPort;
+namespace ConsoleLineInterface
+{
+    public class Program
+    {
 
-//    // int speed = Serial.Send(OBD-Speed-Command-Object)
-//    // Serial.Send(IOCommand)
-//    // Send() => Data Event => WakeUp => Read => Return
-//    public static void Main(string[] args)
-//    {
-//        serialPort = new SerialPort("COM11", 9600, Parity.None, 8, StopBits.One);
+    private static SerialPort serialPort;
 
-//        // Setup SerialPort Connection
-//        serialPort.ReadTimeout = 200;
-//        serialPort.WriteTimeout = 200;
-//        serialPort.DataReceived += new SerialDataReceivedEventHandler(DataRec);
+        // int speed = Serial.Send(OBD-Speed-Command-Object)
+        // Serial.Send(IOCommand)
+        // Send() => Data Event => WakeUp => Read => Return
+        public static void Main(string[] args)
+        {
+            serialPort = new SerialPort("COM11", 9600, Parity.None, 8, StopBits.One);
 
-//        // Open the Connection
-//        serialPort.Open();
+            // Setup SerialPort Connection
+            serialPort.ReadTimeout = 200;
+            serialPort.WriteTimeout = 200;
+            serialPort.DataReceived += new SerialDataReceivedEventHandler(DataRec);
 
-//        // Write Reset Command "AT Z"
-//        //serialPort.Write("AT Z\r");
+            // Open the Connection
+            serialPort.Open();
 
-//        // Read Response "ELM327"
-//        serialPort.Write("01 0C\r");
+            // Write Reset Command "AT Z"
+            //serialPort.Write("AT Z\r");
 
-//        Thread.Sleep(200);
+            // Read Response "ELM327"
+            serialPort.Write("01 0C\r");
 
-//        serialPort.Write("01 05\r");
+            Thread.Sleep(200);
 
-//        // Display Response
-//        Console.Read();
+            serialPort.Write("01 05\r");
 
-//    }
+            // Display Response
+            Console.Read();
 
-//    private static void DataRec(Object sender, SerialDataReceivedEventArgs e)
-//    {
-//        try
-//        {
-//            string msg = serialPort.ReadExisting();
-//            DisplayMessage(msg);
-//        } catch (Exception error)
-//        {
-//            Console.WriteLine(error);
-//        }
-//    }
+        }
 
-//    private static void DisplayMessage(string msg)
-//    {
-//        Console.WriteLine(msg);
-//    }
+        private static void DataRec(Object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                string msg = serialPort.ReadExisting();
+                DisplayMessage(msg);
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error);
+            }
+        }
 
-//}
+        private static void DisplayMessage(string msg)
+        {
+            Console.WriteLine(msg);
+        }
+
+        }
+    }

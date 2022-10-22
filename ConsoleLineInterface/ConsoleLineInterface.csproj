@@ -43,18 +43,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IO\SerialReceiver.cs" />
+    <Compile Include="Models\ElyonModel.cs" />
+    <Compile Include="Models\MessagesModel.cs" />
+    <Compile Include="IO\SerialSender.cs" />
+    <Compile Include="Utils\BaseModel.cs" />
+    <Compile Include="ELMResponse.cs" />
+    <Compile Include="Models\PortSettingsModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SerialCommunication.cs" />
-    <Compile Include="Testing.cs" />
+    <Compile Include="Models\SerialPortModel.cs" />
+    <Compile Include="Utils\DashboardData.cs" />
+    <Compile Include="Utils\ElyonReceiver.cs" />
+    <Compile Include="Utils\UICommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Elyon\Elyon.csproj">
+    <ProjectReference Include="..\..\ElyonOld\ElyonOld.csproj">
       <Project>{ddcc5237-1d4a-447e-b98f-513a8eeea39f}</Project>
-      <Name>Elyon</Name>
+      <Name>ElyonOld</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,5 +1,5 @@
-﻿using Hermes.API;
-using Hermes.Models;
+﻿using Elyon;
+using Elyon.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +24,20 @@ namespace Hermes.Views
     public partial class Home : Page
     {
         readonly DispatcherTimer timer = new DispatcherTimer();
+        private static ElyonModel ElyonModel;
 
         public Home()
         {
             InitializeComponent();
             StartTimer();
-            DataContext = new HomeViewModel();
+            ElyonModel = new ElyonModel(new SerialReceiver());
+            DataContext = ElyonModel;
+            //RequestData();
+        }
+
+        private void RequestData()
+        {
+            ElyonModel.Sender.SendMessage(IOCommand.RPMCommand);
         }
 
         private void StartTimer()

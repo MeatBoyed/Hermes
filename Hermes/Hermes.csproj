@@ -64,10 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="API\OBDReader.cs" />
-    <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\HomeViewModel.cs" />
-    <Compile Include="Models\PortSettingsViewModel.cs" />
+    <Compile Include="Models\SerialReceiver.cs" />
     <Compile Include="Utils\Commands.cs" />
     <Compile Include="Views\Artemis.xaml.cs">
       <DependentUpon>Artemis.xaml</DependentUpon>
@@ -124,13 +121,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\projects\OBD.NET\OBD.NET\OBD.NET\OBD.NET.csproj">
-      <Project>{91e73388-8387-4d9b-8d1f-9eaa718d531b}</Project>
-      <Name>OBD.NET</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Elyon\Elyon.csproj">
+    <ProjectReference Include="..\..\ElyonOld\ElyonOld.csproj">
       <Project>{ddcc5237-1d4a-447e-b98f-513a8eeea39f}</Project>
-      <Name>Elyon</Name>
+      <Name>ElyonOld</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

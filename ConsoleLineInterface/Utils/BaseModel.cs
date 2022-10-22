@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hermes.Models
+namespace ConsoleLineInterface
 {
     public class BaseModel : INotifyPropertyChanged
     {
